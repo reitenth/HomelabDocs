@@ -1,0 +1,21 @@
+services:
+  traefik:
+    image: traefik:v3.4
+    container_name: traefik
+    command: --api.insecure=true --providers.docker --providers.docker.exposedbydefault=false --entryPoints.web.address=:80
+    restart: unless-stopped
+    ports:
+      - 1180:80
+      - 11443:443
+      - 8025:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  whoami:
+    image: traefik/whoami
+    container_name: whoami
+    labels:
+      traefik.enable: true
+      traefik.http.routers.whoami.rule: Host(`reitenth.org`)
+      traefik.http.routers.whoami.entrypoints: web
+      

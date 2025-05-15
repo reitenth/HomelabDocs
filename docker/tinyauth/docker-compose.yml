@@ -8,8 +8,6 @@ services:
       - 80:80
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - reitenth-network
 
   tinyauth:
     image: ghcr.io/steveiliop56/tinyauth:v3
@@ -23,9 +21,3 @@ services:
       traefik.enable: true
       traefik.http.routers.tinyauth.rule: Host(`tinyauth.reitenth.org`)
       traefik.http.middlewares.tinyauth.forwardauth.address: http://tinyauth:3000/api/auth/traefik
-    networks:
-      - reitenth-network
-      
-  networks:
-    reitenth-network:
-      external: true

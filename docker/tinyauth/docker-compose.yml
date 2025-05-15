@@ -6,7 +6,7 @@ services:
     environment:
       - SECRET=kNuQFtYrzsiJQmcqj1pzGH9DP0fgvN1Y
       - APP_URL=https://tinyauth.reitenth.org
-      - USERS=your-username-password-hash
+      - USERS=justin:$$2a$$10$$Lg3.qkIpQTls1IEDJRrQre4ZU1ZHquddJAAswcfW5WfKpaCV4UbCK
     labels:
       traefik.enable: true
       traefik.http.routers.tinyauth.rule: Host(`tinyauth.reitenth.org`)

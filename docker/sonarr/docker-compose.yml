@@ -12,8 +12,11 @@ services:
     ports:
       - 8989:8989
     restart: unless-stopped
+  labels:
+    traefik.http.routers.[your-router].middlewares: tinyauth
     networks:
       - reitenth-network
+    
 networks:
   reitenth-network:
     external: true

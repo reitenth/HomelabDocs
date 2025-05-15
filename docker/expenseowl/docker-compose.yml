@@ -12,6 +12,8 @@ services:
       - "5001:8080"
     volumes:
       - /appdata/expenseowl:/app/data
+    labels:
+      traefik.http.routers.sonarr.middlewares: tinyauth
     networks:
       - reitenth-network
 networks:

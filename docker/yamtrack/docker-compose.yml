@@ -1,0 +1,29 @@
+services:
+  yamtrack:
+    container_name: yamtrack
+    image: ghcr.io/fuzzygrim/yamtrack
+    restart: unless-stopped
+    depends_on:
+      - redis
+    environment:
+      - SECRET=7b4ef690da13221ca042513151bb448e70ae319bebe97e48ce7919c8abb3669a
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - /appdata/yamtrack:/yamtrack/db
+    ports:
+      - "8005:8000"
+    networks:
+      - reitenth-network
+
+  redis:
+    container_name: yamtrack-redis
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - /appdata/yamtrack/redis:/data
+    networks:
+      - reitenth-network
+      
+networks:
+  reitenth-network:
+    external: true

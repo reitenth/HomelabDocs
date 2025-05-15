@@ -10,7 +10,6 @@ services:
       - 8025:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /appdata/traefik/traefik.yaml:/traefik.yaml
     networks:
       - reitenth-network
 networks:

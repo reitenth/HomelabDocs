@@ -6,14 +6,13 @@ services:
       glance.icon: si:actual
       glance.url: http://192.168.68.103:5001/
       glance.description: Expense Tracker
+      traefik.http.routers.sonarr.middlewares: tinyauth
     container_name: expenseowl
     restart: unless-stopped
     ports:
       - "5001:8080"
     volumes:
       - /appdata/expenseowl:/app/data
-    labels:
-      traefik.http.routers.sonarr.middlewares: tinyauth
     networks:
       - reitenth-network
 networks:

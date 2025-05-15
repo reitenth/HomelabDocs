@@ -6,7 +6,7 @@ services:
     environment:
       - SECRET=IT6xEHczjXOwBbVu9J7rHvLI3iNGfWxp
       - APP_URL=https://tinyauth.reitenth.org
-      - USERS=user:justin:$$2a$$10$$8E.PfE8Fxt7tsfbzjpQ7Yu0PDbOtlVAJTGs1uGfEdeEbD/nDAiKg2
+      - USERS=user:justin:$$2a$$10$$cev68Hh7ImCNXGNUIYcLoumQXgygb5r63945kML29bFhN6X/GjDjm
     networks:
       - reitenth-network
 networks:

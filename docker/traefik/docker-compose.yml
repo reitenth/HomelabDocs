@@ -10,12 +10,9 @@ services:
       - 8025:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-
-  whoami:
-    image: traefik/whoami
-    container_name: whoami
-    labels:
-      traefik.enable: true
-      traefik.http.routers.whoami.rule: Host(`reitenth.org`)
-      traefik.http.routers.whoami.entrypoints: web
+    networks:
+      - reitenth-network
+networks:
+  reitenth-network:
+    external: true
       

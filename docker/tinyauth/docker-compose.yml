@@ -1,19 +1,16 @@
 services:
-  tinyauth:
-    container_name: tinyauth
-    image: ghcr.io/steveiliop56/tinyauth:v3
-    restart: unless-stopped
-    environment:
-      - SECRET_FILE=/secret.txt
-      - APP_URL=http://tinyauth.example.com
-      - USERS=user:$$2a$$10$$UdLYoJ5lgPsC0RKqYH/jMua7zIn0g9kPqWmhYayJYLaZQ/FTmH2/u # user:password
-    networks:
-      - reitenth-network
-
-  nginx:
-    container_name: nginx
-    image: nginx:latest
-    restart: unless-stopped
+tinyauth:
+  image: ghcr.io/steveiliop56/tinyauth:v3
+  container_name: tinyauth
+  restart: unless-stopped
+  environment:
+    - SECRET=some-random-32-chars-string
+    - APP_URL=https://tinyauth.example.com
+    - USERS=your-username-password-hash
+  labels:
+    traefik.enable: true
+    traefik.http.routers.tinyauth.rule: Host(`tinyauth.example.com`)
+    traefik.http.middlewares.tinyauth.forwardauth.address: http://tinyauth:3000/api/auth/traefik
     networks:
       - reitenth-network
     

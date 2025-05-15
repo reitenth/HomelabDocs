@@ -16,6 +16,7 @@ services:
     labels:
       traefik.enable: true
       traefik.http.routers.jellyfin.entryPoints: https
+      traefik.http.services.jellyfin.loadbalancer.server.scheme: https
     networks:
       - reitenth-network
 networks:

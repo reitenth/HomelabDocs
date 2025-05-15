@@ -5,7 +5,7 @@ services:
     command: --api.insecure=true --providers.docker
     restart: unless-stopped
     ports:
-      - 80:80
+      - 1180:80
       - 8025:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

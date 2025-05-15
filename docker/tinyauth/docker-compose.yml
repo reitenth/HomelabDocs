@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     ports:
       - 1180:80
+      - 11443:443
       - 8025:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

@@ -1,12 +1,6 @@
 services:
   expenseowl:
     image: tanq16/expenseowl:main
-    labels:
-      glance.name: ExpenseOwl
-      glance.icon: si:actual
-      glance.url: http://192.168.68.103:5001/
-      glance.description: Expense Tracker
-      traefik.http.routers.expenseowl.middlewares: tinyauth
     container_name: expenseowl
     restart: unless-stopped
     ports:

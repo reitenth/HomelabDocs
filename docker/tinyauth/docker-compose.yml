@@ -1,4 +1,14 @@
 services:
+  traefik:
+    image: traefik:v3.3
+    container_name: traefik
+    command: --api.insecure=true --providers.docker
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      
   tinyauth:
     image: ghcr.io/steveiliop56/tinyauth:v3
     container_name: tinyauth

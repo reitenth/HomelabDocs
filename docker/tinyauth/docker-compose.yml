@@ -11,6 +11,32 @@ services:
       traefik.enable: true
       traefik.http.routers.tinyauth.rule: Host(`tinyauth.reitenth.org`)
       traefik.http.middlewares.tinyauth.forwardauth.address: http://tinyauth:3000/api/auth/traefik
+
+services:
+  traefik:
+    image: traefik:v3.3
+    container_name: traefik
+    command: --api.insecure=true --providers.docker
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      networks:
+        - reitenth-network
+
+  tinyauth:
+    image: ghcr.io/steveiliop56/tinyauth:v3
+    container_name: tinyauth
+    restart: unless-stopped
+    environment:
+      - SECRET=IT6xEHczjXOwBbVu9J7rHvLI3iNGfWxp
+      - APP_URL=https://tinyauth.reitenth.org
+      - USERS=user:justin:$$2a$$10$$Lg3.qkIpQTls1IEDJRrQre4ZU1ZHquddJAAswcfW5WfKpaCV4UbCK # user:password
+    labels:
+      traefik.enable: true
+      traefik.http.routers.tinyauth.rule: Host(`tinyauth.reitenth.org`)
+      traefik.http.middlewares.tinyauth.forwardauth.address: http://tinyauth:3000/api/auth/traefik
       networks:
         - reitenth-network
       

@@ -1,18 +1,4 @@
 services:
-  tinyauth:
-    image: ghcr.io/steveiliop56/tinyauth:v3
-    container_name: tinyauth
-    restart: unless-stopped
-    environment:
-      - SECRET=kNuQFtYrzsiJQmcqj1pzGH9DP0fgvN1Y
-      - APP_URL=https://tinyauth.reitenth.org
-      - USERS=justin:$$2a$$10$$Lg3.qkIpQTls1IEDJRrQre4ZU1ZHquddJAAswcfW5WfKpaCV4UbCK
-    labels:
-      traefik.enable: true
-      traefik.http.routers.tinyauth.rule: Host(`tinyauth.reitenth.org`)
-      traefik.http.middlewares.tinyauth.forwardauth.address: http://tinyauth:3000/api/auth/traefik
-
-services:
   traefik:
     image: traefik:v3.3
     container_name: traefik

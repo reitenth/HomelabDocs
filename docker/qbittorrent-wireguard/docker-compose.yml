@@ -1,0 +1,39 @@
+services:
+  qbittorrent-wireguard:
+    container_name: qbittorrent-wireguard
+    image: ghcr.io/hotio/qbittorrent
+    hostname: container-name.internal #
+    ports:
+      - "8082:8080"
+    environment:
+      - VPN_ENABLED=true #
+      - VPN_CONF=wg0 #
+      - VPN_PROVIDER=proton #
+      - VPN_LAN_NETWORK=192.168.68.0/24 #
+      - VPN_LAN_LEAK_ENABLED=false #
+      - VPN_EXPOSE_PORTS_ON_LAN #
+      - VPN_AUTO_PORT_FORWARD=true #
+      - VPN_AUTO_PORT_FORWARD_TO_PORTS= #
+      - VPN_FIREWALL_TYPE=auto #
+      - VPN_HEALTHCHECK_ENABLED=false #
+      - VPN_NAMESERVERS= #
+      - PRIVOXY_ENABLED=false #
+      - UNBOUND_ENABLED=false #
+      - UNBOUND_NAMESERVERS #
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    cap_add:
+      - NET_ADMIN
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1 #
+      - net.ipv6.conf.all.disable_ipv6=1 #
+    restart: unless-stopped
+    volumes:
+      - /appdata/qbittorrent-wireguard:/config
+      - /data/torrents:/data/torrents
+    networks:
+      - reitenth-network
+networks:
+  reitenth-network:
+    external: true

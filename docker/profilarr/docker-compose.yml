@@ -1,0 +1,16 @@
+services:
+  profilarr:
+    image: santiagosayshey/profilarr:latest
+    container_name: profilarr
+    ports:
+      - 6868:6868
+    volumes:
+      - /appdata/profilarr:/config 
+    environment:
+      - TZ=America/Chicago
+    restart: unless-stopped
+    networks:
+      - reitenth-network
+networks:
+  reitenth-network:
+    external: true

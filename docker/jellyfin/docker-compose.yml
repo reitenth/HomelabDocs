@@ -1,0 +1,25 @@
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    labels:
+      glance.name: Jellyfin
+      glance.icon: si:jellyfin
+      glance.url: https://jellyfin.reitenth.org
+      glance.description: Movies & Shows
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - /appdata/jellyfin:/config
+      - /data/media:/data/media
+      - /data/posters:/gdrive
+    ports:
+      - 8096:8096
+    restart: unless-stopped
+    networks:
+      - reitenth-network
+networks:
+  reitenth-network:
+    external: true

@@ -45,7 +45,7 @@ Does not include EDC (Everyday Carry) as well.
 === "Rack"
 
     ```
-    Sliger CX4712
+    Change
     ```
 
 ### PC #1

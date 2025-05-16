@@ -1,0 +1,20 @@
+services:
+  traefik:
+    image: docker.io/library/traefik:v3.4.0
+    container_name: traefik
+    ports:
+      - 1180:80
+      - 11443:443
+      - 8025:8080
+    volumes:
+      - /run/docker.sock:/run/docker.sock
+      - /appdata/traefik/config/traefik.yml:/etc/traefik/
+      - ./certs/:/var/traefik/certs/
+    environment:
+      - CF_DNS_API_TOKEN=your-cloudflare-api-token
+    restart: unless-stopped
+    networks:
+      - reitenth-network
+networks:
+  reitenth-network:
+    external: true

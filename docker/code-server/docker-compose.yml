@@ -14,9 +14,9 @@ services:
       - DEFAULT_WORKSPACE=/config/workspace #optional
     volumes:
       - /appdata/code-server:/config
-      - /projects:/projects
+      - /data/projects:/projects
       - /appdata:/appdata
-      - /docker:/docker
+      - /data/docker:/docker
     ports:
       - 8443:8443
     restart: unless-stopped

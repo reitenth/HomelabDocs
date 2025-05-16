@@ -7,6 +7,10 @@ services:
       - "5001:8080"
     volumes:
       - /appdata/expenseowl:/app/data
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.expenseowl.rule=Host('reitenth.org')
+      - traefik.http.routers.expenseowl.entrypoints=web
     networks:
       - reitenth-network
 networks:

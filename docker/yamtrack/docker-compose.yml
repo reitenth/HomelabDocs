@@ -6,7 +6,7 @@ services:
     depends_on:
       - redis
     environment:
-      - SECRET={SECRET}
+      - SECRET=${SECRET}
       - REDIS_URL=redis://redis:6379
     volumes:
       - /appdata/yamtrack:/yamtrack/db

@@ -9,17 +9,13 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /appdata/traefik/config/traefik.yml:/etc/traefik/traefik.yml
-      - ./certs/:/var/traefik/certs/
+      - /appdata/certs:/var/traefik/certs
     environment:
-      - CF_DNS_API_TOKEN=
+      - CF_DNS_API_TOKEN=${API_TOKEN}
     restart: unless-stopped
-    secrets:
-      - api_token
     networks:
       - reitenth-network
-secrets:
-  api_token:
-    file: ./api_token.txt
+
 networks:
   reitenth-network:
     external: true

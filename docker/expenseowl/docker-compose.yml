@@ -9,8 +9,12 @@ services:
       - /appdata/expenseowl:/app/data
     labels:
       - traefik.enable=true
-      - traefik.http.routers.expenseowl.rule=Host(`expenseowl.reitenth.org`)
-      - traefik.http.routers.expenseowl.entrypoints=web
+      - traefik.http.routers.expenseowl-http.rule=Host(`expenseowl.reitenth.org`)
+      - traefik.http.routers.expenseowl-http.entrypoints=web
+      - traefik.http.routers.expenseowl-https.tls=true
+      - traefik.http.routers.expenseowl-https.tls.certreseolver=cloudflare
+      - traefik.http.routers.expenseowl-https.entrypoints=websecure
+      - traefik.http.routers.expenseowl-https.rule=Host(`expenseowl.reitenth.org`)
     networks:
       - reitenth-network
 networks:

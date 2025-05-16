@@ -14,7 +14,7 @@ services:
       - DEFAULT_WORKSPACE=/config/workspace #optional
     volumes:
       - /appdata/code-server:/config
-      - /data/projects:/projects
+      - /data/github:/github
       - /appdata:/appdata
       - /data/docker:/docker
     ports:

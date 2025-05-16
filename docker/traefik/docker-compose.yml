@@ -11,7 +11,7 @@ services:
       - /appdata/traefik/config/traefik.yml:/etc/traefik/traefik.yml
       - ./certs/:/var/traefik/certs/
     environment:
-      - CF_DNS_API_TOKEN=3m2zJZC3F_f73ebnrouwkhu4dKekgcO_X7B04hqI
+      - CF_DNS_API_TOKEN=
     restart: unless-stopped
     networks:
       - reitenth-network

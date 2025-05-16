@@ -12,7 +12,7 @@ services:
       - traefik.http.routers.expenseowl-http.rule=Host(`expenseowl.reitenth.org`)
       - traefik.http.routers.expenseowl-http.entrypoints=web
       - traefik.http.routers.expenseowl-https.tls=true
-      - traefik.http.routers.expenseowl-https.tls.certreseolver=cloudflare
+      - traefik.http.routers.expenseowl-https.tls.certresolver=cloudflare
       - traefik.http.routers.expenseowl-https.entrypoints=websecure
       - traefik.http.routers.expenseowl-https.rule=Host(`expenseowl.reitenth.org`)
     networks:

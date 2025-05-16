@@ -13,8 +13,13 @@ services:
     environment:
       - CF_DNS_API_TOKEN=
     restart: unless-stopped
+    secrets:
+      - api_token
     networks:
       - reitenth-network
+secrets:
+  api_token:
+    file: ./api_token.txt
 networks:
   reitenth-network:
     external: true

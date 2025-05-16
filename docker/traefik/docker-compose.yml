@@ -8,7 +8,7 @@ services:
       - 8025:8080
     volumes:
       - /run/docker.sock:/run/docker.sock
-      - /appdata/traefik/config/traefik.yml:/etc/traefik/
+      - /appdata/traefik/config/traefik.yml:/etc/traefik/traefik.yml
       - ./certs/:/var/traefik/certs/
     environment:
       - CF_DNS_API_TOKEN=your-cloudflare-api-token

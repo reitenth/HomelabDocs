@@ -8,7 +8,7 @@ services:
     volumes:
       - /appdata/vaultwarden:/data
     ports:
-      - 2080:80
+      - 7080:80
     networks:
       - reitenth-network
 networks:

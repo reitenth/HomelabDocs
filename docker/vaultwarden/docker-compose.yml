@@ -6,7 +6,7 @@ services:
     environment:
       DOMAIN: "https://vw.domain.tld"
     volumes:
-      - /appdata/vaultwarden/:/data/
+      - /appdata/vaultwarden:/data
     ports:
       - 2080:80
     networks:

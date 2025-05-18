@@ -6,6 +6,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=America/Chicago
+      - DEVICE=/dev/dri:/dev/dri
     volumes:
       - /appdata/jellyfin:/config
       - /data/media:/data/media

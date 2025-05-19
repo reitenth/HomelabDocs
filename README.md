@@ -1,4 +1,4 @@
-# HomelabDocs
+# 🏠 HomelabDocs
 
 This repo is the home of my docs for all things in my homelab that I want referenced. 
 

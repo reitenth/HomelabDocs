@@ -1,8 +1,8 @@
 # 🏠 HomelabDocs
 
-I use [Github Wiki](https://github.com/reitenth/HomelabDocs/wiki) for all my doc needs, to have version control and be hosted easily off of my server. 
+[Github Wiki](https://github.com/reitenth/HomelabDocs/wiki)
 
-My current docker compose files can be found [here](https://github.com/reitenth/HomelabDocs/tree/main/docker).
+[Docker Compose](https://github.com/reitenth/HomelabDocs/tree/main/docker)
 
 ### Roadmap
 

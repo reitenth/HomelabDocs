@@ -1,12 +1,8 @@
 # 🏠 HomelabDocs
 
-This repo is the home of my docs for all things in my homelab that I want referenced. 
-
 I use [Github Wiki](https://github.com/reitenth/HomelabDocs/wiki) for all my doc needs, to have version control and be hosted easily off of my server. 
 
 My current docker compose files can be found [here](https://github.com/reitenth/HomelabDocs/tree/main/docker).
-
-# 
 
 ### Roadmap
 

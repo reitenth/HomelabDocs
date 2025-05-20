@@ -24,9 +24,6 @@ services:
       - /appdata/yamtrack/redis:/data
     networks:
       - reitenth-network
-
-volumes:
-  /appdata/yamtrack/redis:
       
 networks:
   reitenth-network:

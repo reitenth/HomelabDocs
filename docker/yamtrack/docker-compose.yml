@@ -20,3 +20,5 @@ services:
     restart: unless-stopped
     volumes:
       - /appdata/yamtrack/redis:/data
+    ports:
+      - "6379:6379"

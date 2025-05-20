@@ -13,9 +13,6 @@ services:
       - /appdata/yamtrack:/yamtrack/db
     ports:
       - "8005:8000"
-    networks:
-      - reitenth-network
-      - default
 
   redis:
     container_name: yamtrack-redis
@@ -23,10 +20,3 @@ services:
     restart: unless-stopped
     volumes:
       - /appdata/yamtrack/redis:/data
-    networks:
-      - reitenth-network
-      - default
-           
-networks:
-  reitenth-network:
-    external: true

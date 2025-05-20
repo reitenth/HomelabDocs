@@ -7,7 +7,7 @@ services:
       - redis
     environment:
       - SECRET=${SECRET}
-      - REDIS_URL=redis://yamtrack-redis:6379
+      - REDIS_URL=redis://redis:6379
     volumes:
       - /appdata/yamtrack:/yamtrack/db
     ports:

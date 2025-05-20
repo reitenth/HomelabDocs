@@ -15,6 +15,7 @@ services:
       - "8005:8000"
     networks:
       - reitenth-network
+      - default
 
   redis:
     container_name: yamtrack-redis
@@ -24,7 +25,8 @@ services:
       - /appdata/yamtrack/redis:/data
     networks:
       - reitenth-network
-      
+      - default
+           
 networks:
   reitenth-network:
     external: true

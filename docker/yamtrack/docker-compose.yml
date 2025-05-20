@@ -8,7 +8,7 @@ services:
     environment:
       - SECRET=${SECRET}
       - TZ=America/Chicago
-      - REDIS_URL=redis://192.168.68.103:6379
+      - REDIS_URL=redis://yamtrack-redis:6379
     volumes:
       - /appdata/yamtrack:/yamtrack/db
     ports:

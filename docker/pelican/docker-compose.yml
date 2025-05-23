@@ -18,32 +18,6 @@ services:
       ADMIN_EMAIL: ${EMAIL}
     networks:
       - reitenth-network
-
-  wings:
-    image: ghcr.io/pelican-dev/wings:latest
-    container_name: pelican_wings
-    restart: unless-stopped
-    ports:
-      - "2022:2022"
-      - "6443:443"
-    stdin_open: true
-    tty: true
-    environment:
-      TZ: America/Chicago
-      APP_TIMEZONE: America/Chicago
-      WINGS_UID: 1000
-      WINGS_GID: 1000
-      WINGS_USERNAME: justin
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/var/lib/docker/containers/:/var/lib/docker/containers/"
-      - "/etc/pelican/:/etc/pelican/"
-      - "/var/lib/pelican/:/var/lib/pelican/"
-      - "/var/log/pelican/:/var/log/pelican/"
-      - "/tmp/pelican/:/tmp/pelican/"
-      - "/etc/ssl/certs:/etc/ssl/certs:ro"
-    networks:
-      - reitenth-network
 networks:
   reitenth-network:
     external: true

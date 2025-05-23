@@ -1,0 +1,47 @@
+services:
+  panel:
+    image: ghcr.io/pelican-dev/panel:latest
+    restart: unless-stopped
+    networks:
+      - default
+    ports:
+      - "4080:80"
+      - "4443:443"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - /appdata/peleican/data:/pelican-data
+      - /appdata/pelican/logs:/var/www/html/storage/logs
+    environment:
+      XDG_DATA_HOME: /pelican-data
+      APP_URL: ${PELICAN_HOST}
+      ADMIN_EMAIL: ${EMAIL}
+
+  wings:
+    image: ghcr.io/pelican-dev/wings:latest
+    restart: always
+    networks:
+      - default
+    ports:
+      - "8094:8080"
+      - "2022:2022"
+    tty: true
+    environment:
+      TZ: America/Chicago
+      WINGS_UID: 1000
+      WINGS_GID: 1000
+      WINGS_USERNAME: pelican
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/var/lib/docker/containers/:/var/lib/docker/containers/"
+      - "/etc/pelican/:/etc/pelican/"
+      - "/var/lib/pelican/:/var/lib/pelican/"
+      - "/var/log/pelican/:/var/log/pelican/"
+      - "/tmp/pelican/:/tmp/pelican/"
+      - "/etc/ssl/certs:/etc/ssl/certs:ro"
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

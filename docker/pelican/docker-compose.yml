@@ -41,7 +41,7 @@ services:
       - "/etc/ssl/certs:/etc/ssl/certs:ro"
       
 volumes:
-  /appdata/pelican/data:
+  pelican-data:
   pelican-logs:
 
 networks:

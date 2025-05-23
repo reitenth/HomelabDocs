@@ -1,6 +1,6 @@
 services:
   panel:
-    image: "pelican-dev/panel:latest"
+    image: ghcr.io/pelican-dev/panel:latest
     container_name: pelican_panel
     restart: unless-stopped
     stdin_open: true
@@ -21,7 +21,7 @@ services:
       - reitenth_network
 
   wings:
-    image: "pelican-dev/wings:latest"
+    image: ghcr.io/pelican-dev/wings:latest
     container_name: pelican_wings
     restart: unless-stopped
     ports:

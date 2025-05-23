@@ -17,10 +17,6 @@ services:
       APP_URL: ${PELICAN_HOST}
       ADMIN_EMAIL: ${EMAIL}
 
-volumes:
-  pelican-data:
-  pelican-logs:
-
   wings:
     image: ghcr.io/pelican-dev/wings:latest
     restart: always
@@ -43,6 +39,10 @@ volumes:
       - "/var/log/pelican/:/var/log/pelican/"
       - "/tmp/pelican/:/tmp/pelican/"
       - "/etc/ssl/certs:/etc/ssl/certs:ro"
+      
+volumes:
+  pelican-data:
+  pelican-logs:
 
 networks:
   default:

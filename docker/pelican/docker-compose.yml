@@ -1,51 +1,24 @@
 services:
   panel:
     image: ghcr.io/pelican-dev/panel:latest
-    container_name: pelican_panel
     restart: unless-stopped
-    stdin_open: true
-    tty: true
+    networks:
+      - default
     ports:
-      - "8089:80"
+      - "4080:80"
+      - "4443:443"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - /appdata/pelican/panel/data:/pelican-data
       - /appdata/pelican/panel/logs:/var/www/html/storage/logs
-      - /appdata/pelican/Caddyfile:/etc/caddy/Caddyfile
     environment:
-      TZ: America/Chicago
-      APP_TIMEZONE: America/Chicago
-      APP_ENV: production
+      XDG_DATA_HOME: /pelican-data
       APP_URL: ${PELICAN_HOST}
       ADMIN_EMAIL: ${EMAIL}
-    networks:
-      - reitenth-network
 
-  wings:
-    image: ghcr.io/pelican-dev/wings:latest
-    container_name: pelican_wings
-    restart: unless-stopped
-    ports:
-      - "2022:2022"
-      - "6443:443"
-    stdin_open: true
-    tty: true
-    environment:
-      TZ: America/Chicago
-      APP_TIMEZONE: America/Chicago
-      WINGS_UID: 1000
-      WINGS_GID: 1000
-      WINGS_USERNAME: justin
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/var/lib/docker/containers/:/var/lib/docker/containers/"
-      - "/etc/pelican/:/etc/pelican/"
-      - "/var/lib/pelican/:/var/lib/pelican/"
-      - "/var/log/pelican/:/var/log/pelican/"
-      - "/tmp/pelican/:/tmp/pelican/"
-      - "/etc/ssl/certs:/etc/ssl/certs:ro"
-    networks:
-      - reitenth-network
-      
 networks:
-  reitenth-network:
-    external: true
+  default:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

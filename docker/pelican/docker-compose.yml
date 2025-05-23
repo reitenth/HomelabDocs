@@ -18,7 +18,7 @@ services:
       APP_URL: ${PELICAN_HOST}
       ADMIN_EMAIL: ${EMAIL}
     networks:
-      - reitenth_network
+      - reitenth-network
 
   wings:
     image: ghcr.io/pelican-dev/wings:latest
@@ -44,7 +44,7 @@ services:
       - "/tmp/pelican/:/tmp/pelican/"
       - "/etc/ssl/certs:/etc/ssl/certs:ro"
     networks:
-      - reitenth_network
+      - reitenth-network
 networks:
   reitenth-network:
     external: true

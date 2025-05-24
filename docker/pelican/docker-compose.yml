@@ -15,9 +15,9 @@ services:
       - /appdata/pelican/logs:/var/www/html/storage/logs
       - /appdata/pelican/Caddyfile:/etc/caddy/Caddyfile
     environment:
-      - XDG_DATA_HOME=/pelican-data
-      - APP_URL=${PELICAN_HOST}
-      - ADMIN_EMAIL=${EMAIL}
+      XDG_DATA_HOME: /pelican-data
+      APP_URL: ${APP_URL}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
 
   wings:
     image: ghcr.io/pelican-dev/wings:latest

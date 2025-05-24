@@ -22,7 +22,7 @@ services:
   wings:
     image: ghcr.io/pelican-dev/wings:latest
     container_name: pelican-wings
-    restart: always
+    restart: unless-stopped
     networks:
       - wings0
     ports:

@@ -24,7 +24,7 @@ services:
     container_name: pelican-wings
     restart: always
     networks:
-      - default
+      - wings0
     ports:
       - "8094:8080"
       - "2022:2022"
@@ -48,3 +48,11 @@ networks:
     ipam:
       config:
         - subnet: 172.21.0.0/16
+  wings0:
+    name: wings0
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "172.22.0.0/16"
+    driver_opts:
+      com.docker.network.bridge.name: wings0

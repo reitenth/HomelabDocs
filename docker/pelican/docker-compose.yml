@@ -42,13 +42,9 @@ services:
       - "/var/log/pelican/:/var/log/pelican/"
       - "/tmp/pelican/:/tmp/pelican/"
       - "/etc/ssl/certs:/etc/ssl/certs:ro"
-      
-volumes:
-  pelican-data:
-  pelican-logs:
 
 networks:
   default:
     ipam:
       config:
-        - subnet: 172.21.0.0/16
+        - subnet: 172.18.0.0/16

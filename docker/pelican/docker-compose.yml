@@ -13,6 +13,7 @@ services:
     volumes:
       - /appdata/pelican/data:/pelican-data
       - /appdata/pelican/logs:/var/www/html/storage/logs
+      - /appdata/pelican/Caddyfile:/etc/caddy/Caddyfile
     environment:
       XDG_DATA_HOME: /pelican-data
       APP_URL: ${PELICAN_HOST}

@@ -17,7 +17,7 @@ services:
       - /data/docker:/docker
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
-      - 8443:8443
+      - 7443:8443
     restart: unless-stopped
     networks:
       - reitenth-network

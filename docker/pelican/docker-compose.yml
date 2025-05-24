@@ -53,6 +53,6 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: "172.22.0.0/16"
+        - subnet: "172.18.0.0/16"
     driver_opts:
       com.docker.network.bridge.name: wings0

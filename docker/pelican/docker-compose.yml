@@ -1,6 +1,7 @@
 services:
   panel:
     image: ghcr.io/pelican-dev/panel:latest
+    container_name: pelican_panel
     restart: unless-stopped
     networks:
       - default
@@ -19,6 +20,7 @@ services:
 
   wings:
     image: ghcr.io/pelican-dev/wings:latest
+    container_name: pelican_wings
     restart: always
     networks:
       - default
